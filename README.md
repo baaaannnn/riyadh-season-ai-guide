@@ -1,20 +1,159 @@
 # Riyadh Season AI Guide
 
-An academic web application for exploring Riyadh Season events, with Arabic sentiment classification integrated into visitor comments on each event page.
+> **حالة النشر:** كود المشروع ودفتر التدريب والتوثيق منشورة. رفع صور الموقع وملف النموذج المدرّب ومخرجات التقييم الثنائية ما زال معلقًا. لإنشاء النموذج محليًا، نفّذي `python ml/download_data.py` ثم `python ml/train.py` بعد تثبيت المتطلبات وقبل تشغيل الخدمة.
 
-## Features
-- Browse and search events.
-- Rate events, write reviews, and like visitor reviews.
-- Display positive comments in green, negative comments in red, and neutral comments in grey.
-- Manage events through an administrator interface.
+**دليل فعاليات موسم الرياض مع تحليل آراء الزوار باللغة العربية باستخدام تعلّم الآلة.**
 
-## Technologies
-PHP, HTML, CSS, JavaScript, MySQL/MariaDB, Python, scikit-learn, and TF-IDF feature extraction. The sentiment workflow compares LinearSVC and Complement Naive Bayes classifiers.
+يجمع المشروع بين موقع ويب يعرض الفعاليات والتقييمات، ونموذج لمعالجة اللغة الطبيعية يصنّف التعليقات العربية إلى **إيجابي، سلبي، أو محايد**. يضيف الزائر لايك وتعليقًا داخل صفحة الفعالية، ويظهر التصنيف بجانب نص التعليق: أخضر للإيجابي، أحمر للسلبي، ورمادي للمحايد، دون صفحة تحليل مستقلة.
 
-## Architecture
-The PHP application communicates with a local Python sentiment service through JSON. Review text is preprocessed and classified before the sentiment label is displayed within the event page.
+## الهدف
 
-## Repository Status
-Project documentation is published. Source-code upload is still pending; this repository is not yet a complete runnable checkout.
+مساعدة الزوار على استكشاف الفعاليات وفهم الآراء المكتوبة عنها عبر تصنيف ملون بجانب كل تعليق. يجسّد المشروع دورة تعلّم آلة كاملة: بيانات مصنّفة، تجهيز النصوص، استخراج الخصائص، تدريب نموذجين، المقارنة والتقييم، ثم الدمج في تطبيق ويب.
 
-Academic team project; this portfolio does not claim sole authorship.
+## الخصائص
+
+- عرض الفعاليات مع الصور والوصف وتقييم النجوم.
+- البحث باسم الفعالية والتصفية حسب الفئة.
+- إضافة التعليقات وقراءة تجارب الزوار.
+- تحليل النصوص العربية باستخدام نموذج متدرّب، مستقل عن تقييم النجوم.
+- خيار لايك مع التعليق، مع الاحتفاظ بتقييم النجوم.
+- تصنيف عربي ملون بجانب كل تعليق داخل صفحة الفعالية نفسها.
+- مقارنة النماذج موثقة في دفتر التدريب وتقارير التقييم.
+- إدارة الفعاليات: إضافة، تعديل، حذف، ورفع الصور.
+- تسجيل دخول للمشرف بكلمات مرور مجزّأة وجلسات محمية.
+- تشغيل نموذج التحليل محليًا دون اشتراك أو مفتاح خدمة ذكاء اصطناعي.
+
+## واجهة التعليقات
+
+تُعرض نتيجة التحليل تلقائيًا بجانب التعليق بعد إرساله. اللايك والنجوم لا يُرسلان إلى النموذج؛ التصنيف يعتمد على النص العربي فقط. إذا تعذّر التحليل، يبقى التعليق محفوظًا وتظهر عبارة «التحليل غير متاح» بدل اعتباره محايدًا.
+
+## التقنيات
+
+| الجزء | الأدوات |
+|---|---|
+| الواجهة | HTML، CSS، JavaScript |
+| تطبيق الويب | PHP، MySQL/MariaDB |
+| تعلّم الآلة | Python، scikit-learn، NumPy، SciPy، joblib |
+| تمثيل النص | TF-IDF للكلمات ومقاطع الحروف |
+| النماذج | Complement Naive Bayes، Linear SVM |
+| التقييم | Accuracy، Macro-F1، Precision، Recall، Confusion Matrix |
+| شرح التجربة | Jupyter Notebook، Matplotlib |
+| ربط النظام | خدمة JSON محلية باستخدام مكتبة Python القياسية |
+
+## نتائج التجربة
+
+اختير **LinearSVC** باستخدام Macro-F1 على مجموعة التحقق. بعد تثبيت الاختيار، جرى التدريب على التدريب والتحقق معًا، والتقييم على مجموعة اختبار مستقلة من ASTD.
+
+| النموذج | Accuracy | Macro-F1 |
+|---|---:|---:|
+| ComplementNB | 62.0% | 55.1% |
+| LinearSVC | **74.8%** | **55.8%** |
+| خط أساس: الفئة الأكثر تكرارًا | 72.4% | 28.0% |
+
+- البيانات بعد التنظيف: **8,886 نصًا**.
+- التقسيم: **6,220 تدريب، 1,333 تحقق، 1,333 اختبار**.
+- أزيلت النصوص المكررة بعد التطبيع والنصوص ذات التصنيفات المتعارضة.
+- لا يوجد تداخل للنصوص المطَبَّعة بين أقسام البيانات.
+- تُلائم TF-IDF على بيانات التدريب فقط عند اختيار النموذج، وعلى التدريب والتحقق عند بناء النموذج النهائي.
+- هذه نتائج ASTD؛ لا تمثل قياسًا مستقلًا لدقة تعليقات موسم الرياض.
+
+التفاصيل القابلة لإعادة الحساب في [metrics.json](ml/reports/metrics.json)، ودفتر [Arabic_Sentiment_Training.ipynb](ml/Arabic_Sentiment_Training.ipynb).
+
+## التشغيل
+
+المتطلبات: **Python 3.12**، و**PHP 8.1+** مع امتداد `mysqli` وتفعيل `allow_url_fopen`، وMySQL أو MariaDB. اختُبر المشروع باستخدام PHP 8.3.6 وMariaDB 10.11.14. يمكن استخدام XAMPP لتشغيل قاعدة البيانات وPHP على Windows.
+
+### 1. قاعدة البيانات
+
+1. شغّلي MySQL من XAMPP.
+2. في phpMyAdmin، أنشئي قاعدة باسم `riyadh_season_db` بترميز `utf8mb4`.
+3. استوردي `database/schema.sql` داخلها.
+4. انسخي `config/local.example.php` إلى `config/local.php` واضبطي بيانات الاتصال المحلية عند الحاجة.
+
+تضم القاعدة الفعاليات الأصلية وثلاثة تعليقات عربية خيالية موسومة بأسماء «زائر تجريبي» لتوضيح الواجهة؛ ليست آراء زوار حقيقيين، ولا تدخل في التدريب أو نتائج ASTD. لا تضم حسابات مشرفين جاهزة.
+
+إذا كانت لديك قاعدة بيانات من الإصدار السابق، لا تعيدي استيرادها: نفّذي `database/migrations/001_review_likes.sql` مرة واحدة في تبويب SQL داخل phpMyAdmin لإضافة حقل اللايك مع الحفاظ على التعليقات. التثبيت الجديد لا يحتاج هذه الخطوة.
+
+### 2. بيئة Python
+
+من مجلد المشروع:
+
+```bash
+python -m venv .venv
+```
+
+على Windows، دون الحاجة إلى تفعيل البيئة:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe ml\server.py
+```
+
+على Linux/macOS:
+
+```bash
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python ml/server.py
+```
+
+ملف النموذج المدرّب `ml/artifacts/sentiment.joblib` لم يُرفع بعد؛ أنشئيه محليًا بتشغيل `python ml/download_data.py` ثم `python ml/train.py` قبل تشغيل الخدمة. الخدمة تعمل على `http://127.0.0.1:5050`.
+
+### 3. تشغيل الموقع
+
+في نافذة طرفية أخرى، من مجلد المشروع:
+
+```bash
+php -S 127.0.0.1:8080 -t web
+```
+
+إذا لم يكن PHP مضافًا للمسار في Windows:
+
+```powershell
+C:\xampp\php\php.exe -S 127.0.0.1:8080 -t web
+```
+
+افتحي `http://127.0.0.1:8080`، اختاري فعالية، ثم أدخلي الاسم والتقييم والتعليق العربي، وحددي «أعجبتني الفعالية» للايك واضغطي «إرسال التعليق». ستظهر النتيجة بجانب التعليق في الصفحة نفسها. يلزم تشغيل قاعدة البيانات وخدمة Python مع الموقع.
+
+### 4. إنشاء حساب مشرف
+
+```bash
+php scripts/create_admin.php
+```
+
+أو استخدمي `C:\xampp\php\php.exe scripts\create_admin.php`. اختاري اسمًا وكلمة مرور من 8 أحرف على الأقل. الإدخال ظاهر في الطرفية المحلية؛ تُخزَّن كلمة المرور في القاعدة كمجزّأ، ولا توجد كلمة مرور جاهزة في ملفات المشروع.
+
+## إعادة التدريب والتقييم
+
+استخدمي Python الخاص بالبيئة الافتراضية للأوامر التالية:
+
+```bash
+python ml/download_data.py
+python ml/train.py
+python -m unittest discover -s tests -v
+```
+
+تُنزَّل البيانات من نسخة محددة من المصدر، ويُتحقق من SHA-256 قبل حفظها. يستخدم التدريب البذرة `42` ويكتب النموذج والتقارير ومصفوفة الالتباس. أعيدي تشغيل خدمة Python بعد تدريب نموذج جديد.
+
+لتشغيل دفتر الشرح: ثبّتي `jupyterlab` في البيئة الافتراضية، ثم افتحي `ml/Arabic_Sentiment_Training.ipynb`. نفّذي تنزيل البيانات أولًا إذا أردتِ تشغيل خلايا التدريب من جديد.
+
+## هيكل الملفات
+
+| المجلد | المحتوى |
+|---|---|
+| `web/` | صفحات الموقع والتصميم وربط خدمة التحليل |
+| `ml/` | تنظيف النصوص، التدريب، التنبؤ، الخدمة، دفتر الشرح |
+| `ml/artifacts/` | النموذج المدرَّب الجاهز للتشغيل |
+| `ml/reports/` | المقاييس، التقسيم، التنبؤات، مصفوفة الالتباس |
+| `database/` | مخطط القاعدة وبيانات العرض التجريبية |
+| `config/` | مثال إعداد الاتصال؛ الإعداد المحلي مستبعد من Git |
+| `scripts/` | إنشاء حساب المشرف |
+| `tests/` | اختبارات خدمة التحليل وسلامة تقسيم البيانات |
+| `docs/` | دليل المناقشة، ملخص التعديلات، التحقق، صور الواجهة |
+
+## مصدر البيانات ونطاق التصنيفات
+
+المصدر: [ASTD — Arabic Sentiment Tweets Dataset](https://github.com/mahmoudnabil/ASTD)، والورقة الأصلية [Nabil et al., EMNLP 2015](https://aclanthology.org/D15-1299/).
+
+التجربة تستخدم `POS` للإيجابي، و`NEG` للسلبي، و`OBJ` للموضوعي، المعروض في الموقع باسم «محايد». الفئة المختلطة التي يسمّيها ملف البيانات `NEUTRAL` مستبعدة، ولا تُدمج مع `OBJ`. يوضح [DATA_SOURCE.md](ml/data/DATA_SOURCE.md) النسخة والترخيص والتحويل.
+
+ملف ترخيص المصدر GPL-2.0 مرفق في `ml/data/ASTD-LICENSE.txt`. النصوص الخام لا تُضمَّن في الحزمة، وتُنزَّل عند إعادة التدريب من مصدرها الأصلي. حقوق ملفات المشروع الأصلية وصوره تبقى لأصحابها؛ لا يُضاف ادعاء بملكية هذه الموارد أو ترخيص جديد لها.
