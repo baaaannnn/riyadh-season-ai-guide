@@ -1,0 +1,78 @@
+
+/* HERO */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-left h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-top: -43px; 
+}
+
+.green { color: #36c768; }
+.blue  { color: #5a6cff; }
+.white { color: #ffffff; }
+
+.hero-right .hero-logo {
+    width: 350px;
+    height: auto;
+    margin-top: -92px;
+    margin-right: -50px;
+}
+
+/* LOGIN TITLE  */
+.login-title {
+    text-align: center;
+    font-size: 40px;
+    margin-top:-15px;
+}
+
+/* LOGIN BOX */
+.login-box {
+    width: 450px;
+    background: #0d1533;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    margin: 30px auto;      /* يجعل البوكس ثابت بالنص */
+       text-align: center;     /* يجعل المحتوى بالمنتصف */
+       margin-top : -10px;/*box up  تعديل رفعنا البوكس */
+}
+
+.login-input {
+    width: 90%;             /* بدل 100% حتى يكون هناك مسافة متساوية يمين ويسار */
+       padding: 15px;
+    border: none;
+    margin: 15px auto;
+    border-radius: 12px;
+    background: #0c1430;
+    color: white;
+    font-size: 16px;
+    display: block;         /* مع margin auto يجعلها بالنص */
+}
+
+.login-btn {
+    width: 90%;
+    padding: 15px;
+    margin-top: 25px;
+    background: #36c768;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* ERROR MESSAGE */
+.error-msg {
+    background: #d9534f;
+    padding: 12px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
