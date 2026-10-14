@@ -1,0 +1,65 @@
+
+/* HERO SECTION  */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;     
+}
+
+.hero-left h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-top:-68px;            
+}
+
+.green { color: #36c768; }
+.blue { color: #5a6cff; }
+.white { color: #ffffff; }
+
+.hero-right .hero-logo {
+    width: 350px;
+    height: auto;
+    margin-top: -118px; 
+    margin-right: -50px;
+}
+
+/* CONTROL BOX */
+.control-box {
+    background: #0d1533;
+    padding: 40px;
+    width: 500px;
+    margin: 60px auto;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.control-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: -30px;/*لشد العنصر اللي تحته الى فوق*/
+    margin-top: -20px;
+    text-align: center;
+
+}
+
+/* BUTTONS */
+.control-btn {
+    display: block;
+    background: #003d99;
+    color: white;
+    padding: 14px;
+    border-radius: 14px;
+    margin: 15px auto;
+    width: 70%;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.control-btn:hover {
+    background: #0052d4;
+}
+
