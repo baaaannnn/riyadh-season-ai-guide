@@ -1,0 +1,102 @@
+[
+  {
+    "check": "Home loads original event cards",
+    "passed": true
+  },
+  {
+    "check": "Original search preserved",
+    "passed": true
+  },
+  {
+    "check": "Original category filter preserved",
+    "passed": true
+  },
+  {
+    "check": "Arabic badges and summary are rendered",
+    "passed": true
+  },
+  {
+    "check": "Review saves and positive text analysis ignores negative stars",
+    "passed": true
+  },
+  {
+    "check": "Database stores Arabic review intact",
+    "passed": true
+  },
+  {
+    "check": "Reject invalid star rating",
+    "passed": true
+  },
+  {
+    "check": "Reject review without CSRF token",
+    "passed": true
+  },
+  {
+    "check": "Unknown item returns 404",
+    "passed": true
+  },
+  {
+    "check": "Admin panel requires login",
+    "passed": true
+  },
+  {
+    "check": "Admin changes require login",
+    "passed": true
+  },
+  {
+    "check": "Standalone Arabic demo calls trained model",
+    "passed": true
+  },
+  {
+    "check": "Standalone demo rejects non-Arabic input",
+    "passed": true
+  },
+  {
+    "check": "Model page displays actual metrics and selected model",
+    "passed": true
+  },
+  {
+    "check": "CLI creates a hashed administrator",
+    "passed": true
+  },
+  {
+    "check": "Login injection cannot authenticate",
+    "passed": true
+  },
+  {
+    "check": "Hashed password login opens admin panel",
+    "passed": true
+  },
+  {
+    "check": "Reject executable upload",
+    "passed": true
+  },
+  {
+    "check": "Multipart image upload and quoted title work",
+    "passed": true
+  },
+  {
+    "check": "Admin loads selected activity",
+    "passed": true
+  },
+  {
+    "check": "Admin updates activity without replacing image",
+    "passed": true
+  },
+  {
+    "check": "Admin deletes activity",
+    "passed": true
+  },
+  {
+    "check": "Reviews remain usable when AI is unavailable",
+    "passed": true
+  },
+  {
+    "check": "Logout ends admin session",
+    "passed": true
+  },
+  {
+    "check": "Admin panel protected after logout",
+    "passed": true
+  }
+]
