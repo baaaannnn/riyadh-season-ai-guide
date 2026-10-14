@@ -1,0 +1,29 @@
+.ai-panel { direction: rtl; text-align: right; background: #101b3e; border: 1px solid #334778; border-radius: 20px; padding: 28px; margin: 28px auto; box-sizing: border-box; }
+.ai-panel h2 { margin-top: 0; color: #b2c1ff; }
+.ai-panel p { line-height: 1.8; color: #d6ddf0; }
+.ai-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.ai-stat { background: #0b1430; border-radius: 12px; padding: 18px; text-align: center; }
+.ai-stat strong { font-size: 28px; display: block; margin-bottom: 6px; }
+.sentiment-badge { display: inline-block; font-size: 14px; padding: 7px 12px; margin-top: 10px; border-radius: 999px; direction: rtl; }
+.sentiment-positive { color: #86efac; background: #14532d; }
+.sentiment-negative { color: #fca5a5; background: #7f1d1d; }
+.sentiment-neutral { color: #e5e7eb; background: #4b5563; }
+.review-comment-line { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.review-comment-line .review-text { margin: 10px 0; overflow-wrap: anywhere; min-width: 0; }
+.review-comment-line .sentiment-badge { margin: 0; flex-shrink: 0; }
+.like-option { display: flex; align-items: center; gap: 8px; margin: 0 0 20px; cursor: pointer; }
+.review-box .like-option input { width: 20px; height: 20px; padding: 0; margin: 0; accent-color: #36c768; }
+.review-like { color: #86efac; font-size: 14px; }
+.review-box input, .review-box select, .review-box textarea { box-sizing: border-box; }
+.sentiment-unknown { color: #e0e3ed; background: #303849; }
+.ai-layout { max-width: 980px; margin: auto; padding: 32px 20px; }
+.ai-heading { font-size: clamp(28px, 5vw, 44px); direction: rtl; text-align: right; margin-bottom: 10px; }
+.ai-eyebrow { color: #5dd49c; direction: rtl; text-align: right; }
+.ai-panel textarea { width: 100%; box-sizing: border-box; min-height: 140px; background: #0b1430; color: white; border: 1px solid #455881; border-radius: 12px; padding: 16px; font: inherit; line-height: 1.8; resize: vertical; }
+.ai-button { background: #5367ed; border: 0; color: white; border-radius: 10px; padding: 13px 22px; font: inherit; cursor: pointer; margin-top: 14px; }
+.ai-examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.ai-example { background: #23305b; color: #e7ecff; border: 1px solid #3e5285; border-radius: 9px; padding: 9px 13px; cursor: pointer; }
+.ai-error { color: #ffc8c8; }
+.ai-metrics { width: 100%; border-collapse: collapse; direction: rtl; }
+.ai-metrics th, .ai-metrics td { padding: 12px; border-bottom: 1px solid #34436b; text-align: right; }
+@media (max-width: 600px) { .header { padding: 18px; flex-wrap: wrap; gap: 12px; } .header a { margin-left: 12px; } .ai-panel { padding: 20px; } .ai-summary { gap: 6px; } .ai-stat { padding: 12px 6px; } }
