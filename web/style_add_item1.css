@@ -1,0 +1,118 @@
+
+/* HERO SECTION  */
+.hero-section-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+.hero-left h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-top: -44px;
+}
+
+.green { color: #36c768; }
+.blue  { color: #5a6cff; }
+.white { color: #ffffff; }
+
+.hero-right .hero-logo {
+    width: 350px;
+    height: auto;
+    margin-top: -92px;
+    margin-right: -50px;
+}
+
+/* PAGE TITLE */
+.add-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: -15px;
+    margin-top: -60px;
+}
+
+/* FORM BOX */
+.form-box {
+    width: 60%;
+    background: #0d1533;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    margin: 40px auto;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type=text],
+textarea,
+input[type=file] {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #0c1430;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 120px;
+}
+
+input[type=text],
+textarea,
+input[type=file],
+select {
+    width: 100%;
+    padding: 14px 40px 14px 14px;
+    border: none;
+    background: #0c1430;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    
+}
+
+
+/* BUTTON */
+.btn {
+    width: 100%;
+    padding: 16px;
+    background: #003d99;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0055cc;
+}
+
+/* SUCCESS + ERROR */
+.success {
+    background: #28a745;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.error {
+    background: #d9534f;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
