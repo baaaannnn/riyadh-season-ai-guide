@@ -1,0 +1,56 @@
+/* BODY STYLE */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at 50% 15%, #223060, #0a1029);
+    color: white;
+}
+
+
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #0d1533d3;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+
+    position: relative;
+    z-index: 1000;
+}
+
+.header a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* PAGE CONTAINER */
+.page-container {
+    padding: 40px;
+}
+
+
+
+
+
+
+/* FOOTER */
+footer {
+    margin-top: 60px;
+    text-align: center;
+    padding: 10px;
+    color: #cccccc;
+    font-size: 14px;
+    background: #0d1533d3;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
