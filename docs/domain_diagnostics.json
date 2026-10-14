@@ -1,0 +1,82 @@
+{
+  "purpose": "Qualitative diagnostic of authored event-related examples, not a held-out visitor benchmark",
+  "origin": "Examples written for this project; expected labels assigned manually during preparation",
+  "used_for_training_or_selection": false,
+  "model_id": "astd-linearsvc-616de26a4e-seed42-v1",
+  "examples": [
+    {
+      "text": "المكان يجنن والتنظيم ممتاز",
+      "expected_label": "positive",
+      "predicted_label": "neutral",
+      "matches_expected": false
+    },
+    {
+      "text": "زحمة وانتظرنا كثير",
+      "expected_label": "negative",
+      "predicted_label": "neutral",
+      "matches_expected": false
+    },
+    {
+      "text": "زرت المكان يوم الخميس",
+      "expected_label": "neutral",
+      "predicted_label": "neutral",
+      "matches_expected": true
+    },
+    {
+      "text": "تجربة رائعة وممتعة شكرا لكم",
+      "expected_label": "positive",
+      "predicted_label": "positive",
+      "matches_expected": true
+    },
+    {
+      "text": "خدمة سيئة وتجربة فاشلة ومخيبة للآمال",
+      "expected_label": "negative",
+      "predicted_label": "negative",
+      "matches_expected": true
+    },
+    {
+      "text": "تقام الفعالية يوم الخميس في الرياض",
+      "expected_label": "neutral",
+      "predicted_label": "neutral",
+      "matches_expected": true
+    },
+    {
+      "text": "المكان ليس جميلا",
+      "expected_label": "negative",
+      "predicted_label": "neutral",
+      "matches_expected": false
+    },
+    {
+      "text": "فعاليات جميلة جدا",
+      "expected_label": "positive",
+      "predicted_label": "positive",
+      "matches_expected": true
+    },
+    {
+      "text": "التنظيم سيئ جدا",
+      "expected_label": "negative",
+      "predicted_label": "negative",
+      "matches_expected": true
+    },
+    {
+      "text": "الفعالية في الرياض",
+      "expected_label": "neutral",
+      "predicted_label": "neutral",
+      "matches_expected": true
+    },
+    {
+      "text": "ممتاز شكرا على التنظيم الرائع",
+      "expected_label": "positive",
+      "predicted_label": "positive",
+      "matches_expected": true
+    },
+    {
+      "text": "الخدمة بطيئة والانتظار طويل",
+      "expected_label": "negative",
+      "predicted_label": "neutral",
+      "matches_expected": false
+    }
+  ],
+  "matches": 8,
+  "total": 12
+}
